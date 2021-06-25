@@ -7,8 +7,8 @@
 (defonce server (atom nil))
 
 (def session-configuration {:secret "hola"
-									                   :resave false
-									                   :saveUninitialized true})
+                            :resave false
+                            :saveUninitialized true})
 
 (defn routes 
   "Pretty self-explanatory, but for more details I would
