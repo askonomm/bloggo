@@ -1,0 +1,13 @@
+{:source-paths
+ ["src"]
+
+ :dependencies [[hiccups "0.3.0"]]
+
+ :builds
+ {:app
+  {:main bloggo.core/main
+   :target :node-script
+   :output-to "bloggo.js"
+   :devtools
+   {:after-load bloggo.core/start!
+    :before-load bloggo.core/stop!}}}}
