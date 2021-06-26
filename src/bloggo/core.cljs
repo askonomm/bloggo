@@ -11,20 +11,22 @@
             [bloggo.routes.admin.signout :as routes.admin.signout]
             [bloggo.routes.admin.posts :as routes.admin.posts]))
 
-
-(set! *warn-on-infer* false)
-
+; This atom will hold our server instance, for a simple
+; reason of being able to destroy it later.
 (defonce server (atom nil))
 
-(def session-configuration {:secret "hola"
+; Session configuration, for more details consult the 
+; express-session docs at https://www.npmjs.com/package/express-session
+(def session-configuration {:secret "doesthisreallymatter?"
                             :resave false
-                            :saveUninitialized true})
+                            :saveUninitialized true
+                            :cookie {:secure false}})
 
 (defn routes 
   "Pretty self-explanatory, but for more details I would
   consult the express documentation that you can find 
   from https://expressjs.com/en/guide/routing.html."
-  [app]
+  [^js app]
   (.get app "/" routes.blog/get!)
   (.get app "/admin" routes.admin/get!)
   (.get app "/admin/setup" routes.admin.setup/get!)
@@ -39,10 +41,18 @@
   then starts the server on the port specified in ENV or 
   if not found, then it tries the port 3000."
   []
-  (let [app (express)]
-    (.use app (session (clj->js session-configuration)))
+  (let [app (express)
+        prod? (= (.get app "env") "production")
+        port (if (nil? (.-PORT (.-env js/process)))
+               3000
+               (int (.-PORT (.-env js/process))))
+        session-conf (merge session-configuration
+                            (when prod? 
+                              {:cookie {:secure true}}))]
+    (when prod? (.set app "trust proxy" 1))
+    (.use app (session (clj->js session-conf)))
     (routes app)
-    (.listen app 3000 (fn [] (prn "Listening ...")))))
+    (.listen app port (fn [] (prn "Listening ...")))))
 
 (defn start! 
   "Starts the server, as well as updates the `server` atom 
