@@ -1,10 +1,10 @@
 (ns bloggo.routes.admin.setup
   (:require-macros [hiccup.core :refer [html]]))
 
-(defn post [req res]
+(defn post! [req res]
   (js/console.log req))
 
-(defn get [req res]
+(defn get! [req res]
   (.send res (html [:div.setup-view
                     [:h1 "Bloggo Set-up"]
                     [:form {:method "post"}

@@ -7,6 +7,7 @@
  {:app
   {:main bloggo.core/main
    :target :node-script
+   :compiler-options {:infer-externs :auto}
    :output-to "bloggo.js"
    :devtools
    {:after-load bloggo.core/start!

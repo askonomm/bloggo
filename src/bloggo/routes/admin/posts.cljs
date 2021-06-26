@@ -1,3 +1,3 @@
 (ns bloggo.routes.admin.posts)
 
-(defn get [req res])
+(defn get! [req res])

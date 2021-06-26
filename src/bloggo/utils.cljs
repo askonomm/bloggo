@@ -6,5 +6,5 @@
   [identifier args]
   (let [args (into [] args)
         index (.indexOf args identifier)]
-    (when (not (= index -1)
-      true))))
+    (when (not= index -1)
+      true)))
