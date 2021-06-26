@@ -1,6 +1,14 @@
-(ns bloggo.utils)
+(ns bloggo.utils
+  (:require [clojure.string :as str]))
 
-(defn cli-arg? 
+(defn valid-email? 
+  "Checks if the provided `email` contains the @
+  character or not. I know this is not great 
+  e-mail validation, but I was in a hurry."
+  [email]
+  (str/includes? email "@"))
+
+(defn cli-arg?
   "Attempts to find if `identifier` exists in `args`, and 
   if it does, returns `true`. Otherwise `nil`."
   [identifier args]

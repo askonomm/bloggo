@@ -12,33 +12,29 @@
 
    <form method="post">
 
-      {{#if error}}
-         <div class="error">{{error}}</div>
-      {{/if}}
-
       <h2>Blog details</h2>
       <p>Give your new blog a catchy name and a swift description.</p>
-      <label{{#if error-title}} class="error"{{/if}}>
-         <span>Title</span>
+      <label{{#if error-title-required}} class="error"{{/if}}>
+         <span>Title {{#if error-title-required}}<strong>Required</strong>{{/if}}</span>
          <input type="text" name="title" placeholder="Bloggin' Blog">
       </label>
 
-      <label{{#if error-description}} class="error"{{/if}}>
-         <span>Description</span>
+      <label{{#if error-description-required}} class="error"{{/if}}>
+         <span>Description {{#if error-description-required}}<strong>Required</strong>{{/if}}</span>
          <textarea name="description" placeholder="Where fingers meet a keyboard and magic comes out."></textarea>
       </label>
 
       <h2>Your details</h2>
       <p>Your new blog needs a hero, and you're the perfect fit!</p>
 
-      <label{{#if error-email}} class="error"{{/if}}>
-         <span>E-mail</span>
+      <label{{#if error-email-required}} class="error"{{/if}}>
+         <span>E-mail {{#if error-email-required}}<strong>Required</strong>{{/if}}</span>
          <input type="email" name="email" placeholder="Your e-mail">
       </label>
 
       
-      <label{{#if error-password}} class="error"{{/if}}>
-         <span>Password</span>
+      <label{{#if error-password-required}} class="error"{{/if}}>
+         <span>Password {{#if error-password-required}}<strong>Required</strong>{{/if}}</span>
          <input type="password" name="password" placeholder="Your password">
       </label>
 

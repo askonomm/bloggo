@@ -1,3 +1,4 @@
 (ns bloggo.routes.admin.signin)
 
-(defn get! [req res])
+(defn get! [_ ^js res]
+  (.render res "admin/signin"))
