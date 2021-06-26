@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+   <meta charset="utf-8" />
+   <meta name="viewport" content="width=device-width" />
+   <title>Set-up - Bloggo</title>
+   <link rel="stylesheet" href="/assets/admin/css/setup.css" />
+</head>
+<body>
+
+   <h1>Install <strong>Bloggo</strong></h1>
+
+   <form method="post">
+
+      {{#if error}}
+         <div class="error">{{error}}</div>
+      {{/if}}
+
+      <h2>Blog details</h2>
+      <p>Give your new blog a catchy name and a swift description.</p>
+      <label{{#if error-title}} class="error"{{/if}}>
+         <span>Title</span>
+         <input type="text" name="title" placeholder="Bloggin' Blog">
+      </label>
+
+      <label{{#if error-description}} class="error"{{/if}}>
+         <span>Description</span>
+         <textarea name="description" placeholder="Where fingers meet a keyboard and magic comes out."></textarea>
+      </label>
+
+      <h2>Your details</h2>
+      <p>Your new blog needs a hero, and you're the perfect fit!</p>
+
+      <label{{#if error-email}} class="error"{{/if}}>
+         <span>E-mail</span>
+         <input type="email" name="email" placeholder="Your e-mail">
+      </label>
+
+      
+      <label{{#if error-password}} class="error"{{/if}}>
+         <span>Password</span>
+         <input type="password" name="password" placeholder="Your password">
+      </label>
+
+      <button type="submit">Set-up!</button>
+
+   </form>
+
+</body>
+</html>

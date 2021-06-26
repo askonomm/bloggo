@@ -1,6 +1,8 @@
 (ns bloggo.core
   (:require ["express" :as express]
             ["express-session" :as session]
+            ["express-handlebars" :as hbs]
+            ["body-parser" :as body-parser]
             [bloggo.data :as data]
             [bloggo.utils :as utils]
             [bloggo.routes.blog :as routes.blog]
@@ -51,6 +53,11 @@
                               {:cookie {:secure true}}))]
     (when prod? (.set app "trust proxy" 1))
     (.use app (session (clj->js session-conf)))
+    (.use app (.json body-parser))
+    (.use app (.urlencoded body-parser (clj->js {:extended true})))
+    (.use app "/assets" (.static express "assets"))
+    (.engine app ".hbs" (hbs (clj->js {:extname ".hbs" :defaultLayout false})))
+    (.set app "view engine" ".hbs")
     (routes app)
     (.listen app port (fn [] (prn "Listening ...")))))
 
@@ -61,7 +68,7 @@
   (reset! server (start-server)))
 
 (defn stop! 
-  "Closes the @server connection as well as sets the `server`
+  "Closes the `server` connection as well as sets the `server`
   atom to `nil`."
   []
   (.close @server)

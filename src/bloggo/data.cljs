@@ -12,7 +12,9 @@
   (let [posts-sql (.toString (.readFileSync fs "sql/posts.sql"))]
     (.exec db posts-sql))
   (let [users-sql (.toString (.readFileSync fs "sql/users.sql"))]
-    (.exec db users-sql)))
+    (.exec db users-sql))
+  (let [config-sql (.toString (.readFileSync fs "sql/config.sql"))]
+    (.exec db config-sql)))
 
 (defn any-posts? 
   "Checks if there are any posts in the database or not."
