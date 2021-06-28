@@ -1,5 +1,5 @@
 (ns bloggo.routes.admin
-  (:require [bloggo.data :as data]))
+  (:require [bloggo.data.config :as config]))
 
 (defn get!
   "Checks if the application has any users, because
@@ -10,7 +10,7 @@
   If the user does not have a session, we redirect to Sign In.
   And if the user does have a session, we redirect to Posts."
   [req res]
-  (cond (not (data/any-users?))
+  (cond (not (config/get "version"))
         (.redirect res "/admin/setup")
 
         (empty? (.-uid ^js (.-session req)))

@@ -1,7 +1,7 @@
 {:source-paths
  ["src"]
 
- :dependencies [[hiccups "0.3.0"]]
+ :dependencies [[funcool/promesa "6.0.2"]]
 
  :builds
  {:app

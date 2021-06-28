@@ -112,8 +112,9 @@ label.error span strong {
 label input {
 	width: 100%;
 	height: 50px;
+	text-shadow: 0 -1px 0 rgba(0,0,0,.5);
 	background: #222;
-	box-shadow: inset 0px 3px 5px rgba(0,0,0,.25);
+	box-shadow: inset 0px 2px 3px rgba(0,0,0,.15);
 	border: 1px solid #333;
 	border-radius: 5px;
 	padding-left: 20px;
@@ -129,8 +130,9 @@ label textarea {
 	width: 100%;
 	height: 100px;
 	line-height: 1.5;
+	text-shadow: 0 -1px 0 rgba(0,0,0,.5);
 	background: #222;
-	box-shadow: inset 0px 3px 5px rgba(0,0,0,.25);
+	box-shadow: inset 0px 2px 3px rgba(0,0,0,.15);
 	border: 1px solid #333;
 	border-radius: 5px;
 	padding-top: 16px;
@@ -157,7 +159,7 @@ button {
 	font-weight: 600;
 	text-shadow: 0 -1px 0 rgba(0,0,0,.75);
 	background: #FFBD39;
-	background: linear-gradient(-10deg, #3a6ce4, #1e57de);
+	background: linear-gradient(130deg, #3a6ce4, #1e57de);
 	box-shadow: 0px 1px 10px rgba(0,0,0,.5);
 	border-top: 1px solid rgba(255,255,255,.2);
 	border-left: 1px solid transparent;
