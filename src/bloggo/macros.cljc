@@ -30,5 +30,5 @@
 
 (defmacro protected [& body]
   `(if (cljs.core/aget ~'req "session" "uid")
-     ~@body
+     (do ~@body)
      (.redirect ~'res "/admin/signin")))

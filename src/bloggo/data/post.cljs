@@ -18,7 +18,6 @@
 (defn update-post! [id data]
   (let [post (get-post id)
         new-post (merge post data)]
-    (prn "new-post: " new-post)
     (data/run!
      "UPDATE posts SET title = ?, slug = ?, entry = ?, timestamp = ?, status = ? WHERE id = ?"
      [(get new-post :title)
@@ -27,3 +26,8 @@
       (get new-post :timestamp)
       (get new-post :status)
       (get new-post :id)])))
+
+(defn delete-post! [id]
+  (data/run!
+   "DELETE FROM posts WHERE id = ?"
+   [id]))

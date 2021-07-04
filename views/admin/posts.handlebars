@@ -11,4 +11,7 @@
         </a>
     </h2>
 
+    <a href="/admin/edit-post/{{id}}">Edit</a>
+    <a href="/admin/delete-post/{{id}}" onclick="if(!confirm('Are you sure?')) return false;">Delete</a>
+
 {{/each}}

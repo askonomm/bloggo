@@ -12,7 +12,8 @@
             [bloggo.routes.admin.signout :as routes.admin.signout]
             [bloggo.routes.admin.posts :as routes.admin.posts]
             [bloggo.routes.admin.new-post :as routes.admin.new-post]
-            [bloggo.routes.admin.edit-post :as routes.admin.edit-post])
+            [bloggo.routes.admin.edit-post :as routes.admin.edit-post]
+            [bloggo.routes.admin.delete-post :as routes.admin.delete-post])
   (:require-macros [bloggo.macros :refer [route route!]]))
 
 ; This atom will hold our server instance, for a simple
@@ -42,7 +43,7 @@
   (route "/admin/new-post" routes.admin.new-post/get!)
   (route "/admin/edit-post/:id" routes.admin.edit-post/get!)
   (route! "/admin/edit-post/:id" routes.admin.edit-post/post!)
-  #_(route "/admin/delete-post/:id" routes.admin.delete-post/get!)
+  (route "/admin/delete-post/:id" routes.admin.delete-post/get!)
   (route "/admin/signin" routes.admin.signin/get!)
   (route! "/admin/signin" routes.admin.signin/post!)
   (route "/admin/signout" routes.admin.signout/get!)
