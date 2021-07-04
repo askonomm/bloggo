@@ -1,5 +1,6 @@
 (ns bloggo.routes.admin
-  (:require [bloggo.data.config :refer [get-config]]))
+  (:require [bloggo.data.config :refer [get-config]])
+  (:require-macros [bloggo.macros :refer [redirect session]]))
 
 (defn get!
   "Checks if the application has any users, because
@@ -11,8 +12,8 @@
   And if the user does have a session, we redirect to Posts."
   [^js req ^js res]
   (cond (not (get-config "version"))
-        (.redirect res "/admin/setup")
-        (undefined? (.-uid (.-session req)))
-        (.redirect res "/admin/signin")
+        (redirect "/admin/setup")
+        (session "uid")
+        (redirect "/admin/signin")
         :else
-        (.redirect res "/admin/posts")))
+        (redirect "/admin/posts")))
