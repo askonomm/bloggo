@@ -4,7 +4,6 @@
             [re-frame.core :refer [dispatch dispatch-sync subscribe]]
             [editor.events]
             [editor.subs]
-            [editor.utils :as utils]
             [editor.blocks :as blocks]
             [editor.blocks.add :as blocks.add]))
 

@@ -29,8 +29,3 @@
            (if (= index position)
              [block iteration-block]
              iteration-block)) blocks))))))
-
-(defn set-entry! [blocks]
-  (set!
-   (.-value (.querySelector js/document "input[name='entry']"))
-   (js/encodeURIComponent (pr-str blocks))))
