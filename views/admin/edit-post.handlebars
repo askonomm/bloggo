@@ -12,4 +12,12 @@
 </form>
 
 <script src="/assets/admin/js/editor/public/js/main.js"></script>
-<script>editor.core.main(`{{{post.entry}}}`);</script>
+<script>
+editor.core.main({
+    container: '.block-editor',
+    initialContent: `{{{post.entry}}}`,
+    onChange: (content) => {
+        document.querySelector('input[name="entry"]').value = content;
+    }
+});
+</script>

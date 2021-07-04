@@ -1,29 +1,32 @@
 (ns editor.core
   (:require [clojure.edn :as edn]
-            [reagent.core :as r]
             [reagent.dom :as rdom]
             [re-frame.core :refer [dispatch dispatch-sync subscribe]]
             [editor.events]
             [editor.subs]
             [editor.utils :as utils]
-            [editor.blocks :as blocks]))
+            [editor.blocks :as blocks]
+            [editor.blocks.add :as blocks.add]))
 
-(defn editor []
+(defn editor [on-change-callback]
   (let [blocks @(subscribe [:blocks])]
-    (utils/set-entry! blocks)
+    (on-change-callback (js/encodeURIComponent (pr-str blocks)))
     [:div.blocks
-     [blocks/add-block 0]
+     [blocks.add/block 0]
      (map-indexed
       (fn [index block]
         ^{:key index}
         [:<>
          [:div.block {:class (get block :type)}
           [blocks/block index block]]
-         [blocks/add-block (+ index 1)]])
+         [blocks.add/block (+ index 1)]])
       blocks)]))
 
-(defn ^:export main [raw-content]
-  (dispatch-sync [:initialise-db])
-  (when-not (empty? raw-content)
-    (dispatch [:set-blocks (edn/read-string (js/decodeURIComponent raw-content))]))
-  (rdom/render [editor] (.querySelector js/document ".block-editor")))
+(defn ^:export main [args]
+  (let [container (get (js->clj args :keywordize-keys true) :container)
+        content (get (js->clj args :keywordize-keys true) :initialContent)
+        on-change-callback (get (js->clj args :keywordize-keys true) :onChange)]
+    (dispatch-sync [:initialise-db])
+    (when-not (empty? content)
+      (dispatch [:set-blocks (edn/read-string (js/decodeURIComponent content))]))
+    (rdom/render [editor on-change-callback] (.querySelector js/document container))))
