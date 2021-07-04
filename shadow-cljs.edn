@@ -1,7 +1,7 @@
 {:source-paths
  ["src"]
 
- :dependencies [[funcool/promesa "6.0.2"]]
+ :dependencies []
 
  :builds
  {:app

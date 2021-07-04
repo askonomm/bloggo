@@ -1,0 +1,14 @@
+<h1>Posts</h1>
+
+<p><a href="/admin/new-post">New Post</a></p>
+
+{{#each posts}}
+
+    <h2>
+        <a href="/admin/edit-post/{{id}}">
+            {{#if title}}{{title}}{{/if}}
+            {{#unless title}}Untitled{{/unless}}
+        </a>
+    </h2>
+
+{{/each}}

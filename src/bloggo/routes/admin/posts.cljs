@@ -1,8 +1,10 @@
 (ns bloggo.routes.admin.posts
-  (:require [bloggo.data.config :as config]))
+  (:require [bloggo.data.posts :refer [get-posts]])
+  (:require-macros [bloggo.macros :refer [view protected]]))
 
-(defn get! [req res]
-  (if (not (and (.-uid (.-session req))
-                (config/get "version")))
-    (.redirect res "/admin/setup")
-    (.render res "admin/posts")))
+(defn get! [^js req ^js res]
+  (protected
+   (let [posts (get-posts 10)]
+     (view "admin/posts" {:layout "admin"
+                          :title "Posts"
+                          :posts posts}))))

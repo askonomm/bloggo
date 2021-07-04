@@ -1,0 +1,25 @@
+.block-editor {
+    width: 600px;
+}
+
+.block-editor .block {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.block-editor .block.paragraph textarea {
+    width: 100%;
+    resize: none;
+    border: 0;
+    padding: 0;
+}
+
+.block-editor .block.heading-big textarea {
+    width: 100%;
+    overflow: hidden;
+    font-size: 20px;
+    font-weight: 800;
+    resize: none;
+    border: 0;
+    padding: 0;
+}

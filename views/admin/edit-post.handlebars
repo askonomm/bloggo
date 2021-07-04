@@ -1,0 +1,15 @@
+<h1>Edit Post</h1>
+
+<form method="post">
+
+    <button type="submit">Save</button>
+
+    <input type="text" name="title" value="{{post.title}}">
+    <input type="hidden" name="entry">
+
+    <div class="block-editor"></div>
+
+</form>
+
+<script src="/assets/admin/js/editor/public/js/main.js"></script>
+<script>editor.core.main(`{{{post.entry}}}`);</script>
