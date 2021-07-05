@@ -14,7 +14,7 @@
      [blocks.add/block 0]
      (map-indexed
       (fn [index block]
-        ^{:key index}
+        ^{:key (get block :id)}
         [:<>
          [:div.block {:class (get block :type)}
           [blocks/block index block]]

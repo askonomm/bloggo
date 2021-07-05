@@ -62,11 +62,8 @@
     display: block;
 }
 
-.block-editor .block.paragraph textarea {
-    width: 100%;
-    resize: none;
-    border: 0;
-    padding: 0;
+.block-editor .block.paragraph .paragraph-content {
+    padding: 20px;
 }
 
 .block-editor .block.heading-big textarea {
@@ -76,5 +73,5 @@
     font-weight: 800;
     resize: none;
     border: 0;
-    padding: 0;
+    padding: 20px;
 }

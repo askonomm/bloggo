@@ -18,7 +18,7 @@
  (fn [db [_ {:keys [position block]}]]
    (let [blocks (get db :blocks)
          new-blocks (utils/block->blocks blocks block position)]
-     (assoc db :blocks (vec (flatten new-blocks))))))
+     (assoc db :blocks new-blocks))))
 
 (reg-event-db
  :update-paragraph-block

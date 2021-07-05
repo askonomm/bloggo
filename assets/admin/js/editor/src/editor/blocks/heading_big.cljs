@@ -9,7 +9,6 @@
     (prn "enter was not pressed")))
 
 (defn on-change [index height event]
-  (prn "change happened")
   (dispatch [:update-heading-block
              {:position index
               :content (.-value (.-target event))}])

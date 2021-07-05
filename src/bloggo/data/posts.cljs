@@ -9,4 +9,4 @@
     (data/query-all
      "SELECT * FROM posts ORDER BY timestamp DESC LIMIT ?"
      [limit])
-    (data/query "SELECT * FROM posts ORDER BY timestamp DESC")))
+    (data/query "SELECT * FROM posts ORDER BY id DESC")))

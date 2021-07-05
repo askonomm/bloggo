@@ -8,22 +8,16 @@
     (.preventDefault event)
     (prn "enter was not pressed")))
 
-(defn on-input [index height event]
+(defn on-input [index event]
   (dispatch
    [:update-paragraph-block
     {:position index
-     :content (.-innerHTML (.-target event))}])
-  (reset! height (.-scrollHeight (.-target event))))
+     :content (.-innerHTML (.-target event))}]))
 
 (defn block [index block]
-  (let [height (r/atom 0)]
-    (fn []
-      [:div.paragraph-content
-       {:contentEditable true
-        :style {:height (str @height "px")}
-        :ref (fn [el]
-               (when el
-                 (reset! height (.-scrollHeight el))))
-        :on-key-press #(on-key-press %)
-        :on-input #(on-input index height %)
-        :dangerouslySetInnerHTML {:__html (get block :content)}}])))
+  (fn []
+    [:div.paragraph-content
+     {:contentEditable true
+      :on-key-press #(on-key-press %)
+      :on-input #(on-input index %)
+      :dangerouslySetInnerHTML {:__html (get block :content)}}]))

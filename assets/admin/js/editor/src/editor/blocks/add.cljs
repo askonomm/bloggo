@@ -5,14 +5,16 @@
 (defn add-paragraph [index block-menu]
   (dispatch [:add-block
              {:position index
-              :block {:type :paragraph
+              :block {:id (random-uuid)
+                      :type :paragraph
                       :content ""}}])
   (reset! block-menu nil))
 
 (defn add-heading-big [index block-menu]
   (dispatch [:add-block
              {:position index
-              :block {:type :heading-big
+              :block {:id (random-uuid)
+                      :type :heading-big
                       :content ""}}])
   (reset! block-menu nil))
 

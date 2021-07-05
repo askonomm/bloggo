@@ -9,6 +9,8 @@
   (let [last-post (get-posts 1)
         last-post-id (if last-post (get last-post :id) 0)
         new-post-id (+ last-post-id 1)]
+    (prn "last post: " last-post)
+    (prn "new post id: " new-post-id)
     (data/run!
      "INSERT INTO posts (`id`, `uid`) VALUES (?, ?)"
      [new-post-id user-id])))
