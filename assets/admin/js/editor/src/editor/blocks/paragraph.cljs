@@ -1,6 +1,5 @@
 (ns editor.blocks.paragraph
-  (:require [reagent.core :as r]
-            [re-frame.core :refer [dispatch]]))
+  (:require [re-frame.core :refer [dispatch]]))
 
 (defn on-key-press [event]
   (if (or (= "Enter" (.-key event))
