@@ -22,7 +22,8 @@
       [:div.add-block
        (when @block-menu
          [:div.menu
+          {:on-mouse-leave #(reset! block-menu nil)}
           [:ul
            [:li {:on-click #(add-paragraph index block-menu)} "Paragraph"]
            [:li {:on-click #(add-heading-big index block-menu)} "Heading Big"]]])
-       [:div {:on-click #(reset! block-menu true)} "Add block"]])))
+       [:div.add-btn {:on-click #(reset! block-menu true)} "+"]])))

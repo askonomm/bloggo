@@ -11,7 +11,6 @@
 (reg-event-db
  :set-blocks
  (fn [db [_ blocks]]
-   (prn "setting blocks: " blocks)
    (assoc db :blocks blocks)))
 
 (reg-event-db
