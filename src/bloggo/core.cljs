@@ -86,7 +86,6 @@
   (reset! server nil))
 
 (defn main
-  "Main entrypoint to the app. When `--install` CLI argument
-  is provided it will also set-up the SQLite database schema."
+  "Main entrypoint to the app."
   [& _]
   (start!))

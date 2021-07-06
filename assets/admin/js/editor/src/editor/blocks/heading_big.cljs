@@ -19,6 +19,7 @@
     (fn []
       [:textarea
        {:default-value (get block :content)
+        :placeholder "Start writing a heading ..."
         :style {:height (str @height "px")}
         :ref (fn [el]
                (when el
