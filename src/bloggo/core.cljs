@@ -22,11 +22,12 @@
 
 ; Session configuration, for more details consult the 
 ; express-session docs at https://www.npmjs.com/package/express-session
-(def session-configuration {:secret "doesthisreallymatter?"
-                            :resave false
-                            :saveUninitialized true
-                            :cookie {:secure false
-                                     :maxAge (* 24 3600000)}})
+(def session-configuration
+  {:secret "doesthisreallymatter?"
+   :resave false
+   :saveUninitialized true
+   :cookie {:secure false
+            :maxAge (* 24 3600000)}})
 
 (def hbs (.create handlebars (clj->js {:helpers {:config #(hbs-helpers/config %)}})))
 
