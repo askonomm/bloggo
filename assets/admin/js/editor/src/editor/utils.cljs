@@ -38,6 +38,6 @@
   (vec
    (remove nil?
            (map-indexed
-            (fn [i-index i-block]
-              (when-not (= i-index index)
-                i-block)) blocks))))
+            (fn [iteration-index iteration-block]
+              (when-not (= iteration-index index)
+                iteration-block)) blocks))))
