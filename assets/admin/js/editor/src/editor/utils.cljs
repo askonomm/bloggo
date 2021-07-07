@@ -29,3 +29,15 @@
            (if (= index position)
              [block iteration-block]
              iteration-block)) blocks))))))
+
+(defn block<-blocks
+  "Takes an input of `blocks` from which it removes whatever
+  block is occupying space on given `index`, and returns the
+  result."
+  [blocks index]
+  (vec
+   (remove nil?
+           (map-indexed
+            (fn [i-index i-block]
+              (when-not (= i-index index)
+                i-block)) blocks))))

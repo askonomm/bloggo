@@ -16,9 +16,15 @@
 (reg-event-db
  :add-block
  (fn [db [_ {:keys [position block]}]]
-   (let [blocks (get db :blocks)
-         new-blocks (utils/block->blocks blocks block position)]
-     (assoc db :blocks new-blocks))))
+   (let [blocks (get db :blocks)]
+     (assoc db :blocks (utils/block->blocks blocks block position)))))
+
+(reg-event-db
+ :delete-block
+ (fn [db [_ index]]
+   (prn "index: " index)
+   (let [blocks (get db :blocks)]
+     (assoc db :blocks (utils/block<-blocks blocks index)))))
 
 (reg-event-db
  :update-paragraph-block

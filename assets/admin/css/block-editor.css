@@ -63,6 +63,7 @@
 }
 
 .block-editor .block.paragraph .paragraph-content {
+    outline: none;
     padding: 20px;
 }
 
@@ -71,6 +72,7 @@
     overflow: hidden;
     font-size: 20px;
     font-weight: 800;
+    outline: none;
     resize: none;
     border: 0;
     padding: 20px;

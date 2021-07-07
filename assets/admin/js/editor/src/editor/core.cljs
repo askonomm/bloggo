@@ -16,8 +16,7 @@
       (fn [index block]
         ^{:key (get block :id)}
         [:<>
-         [:div.block {:class (get block :type)}
-          [blocks/block index block]]
+         [blocks/block index block]
          [blocks.add/block (+ index 1)]])
       blocks)]))
 
