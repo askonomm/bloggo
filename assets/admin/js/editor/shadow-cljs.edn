@@ -4,7 +4,8 @@
 
  :dependencies
  [[reagent "1.1.0"]
-  [re-frame "1.2.0"]]
+  [re-frame "1.2.0"]
+  [hickory "0.7.1"]]
 
  :builds
  {:app

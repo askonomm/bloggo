@@ -1,5 +1,7 @@
 (ns editor.blocks.add
-  (:require [reagent.core :as r]
+  (:require ["@fortawesome/react-fontawesome" :refer (FontAwesomeIcon)]
+            ["@fortawesome/free-solid-svg-icons" :refer (faPlus faParagraph faHeading)]
+            [reagent.core :as r]
             [re-frame.core :refer [dispatch]]))
 
 (defn add-paragraph [index block-menu]
@@ -26,6 +28,11 @@
          [:div.menu
           {:on-mouse-leave #(reset! block-menu nil)}
           [:ul
-           [:li {:on-click #(add-paragraph index block-menu)} "Paragraph"]
-           [:li {:on-click #(add-heading-big index block-menu)} "Heading Big"]]])
-       [:div.add-btn {:on-click #(reset! block-menu true)} "+"]])))
+           [:li {:on-click #(add-paragraph index block-menu)}
+            [:div.icon [:> FontAwesomeIcon {:icon faParagraph}]]
+            [:div.label "Paragraph"]]
+           [:li {:on-click #(add-heading-big index block-menu)}
+            [:div.icon [:> FontAwesomeIcon {:icon faHeading}]]
+            [:div.label "Big heading"]]]])
+       [:div.add-btn {:on-click #(reset! block-menu true)}
+        [:> FontAwesomeIcon {:icon faPlus}]]])))

@@ -1,4 +1,8 @@
-(ns editor.utils)
+(ns editor.utils
+  (:require [hickory.core :as h]
+            [hickory.render :as hr]
+            ["sanitize-html" :as sanitize-html]
+            [clojure.string :as str]))
 
 (defn block->blocks
   "Takes an input of `blocks`, into which it adds `block`, 
@@ -41,3 +45,24 @@
             (fn [iteration-index iteration-block]
               (when-not (= iteration-index index)
                 iteration-block)) blocks))))
+
+(defn parse-html
+  "Takes in a raw string of `html`, and then removes all HTML
+  elements other than a `a`, `u`, `b`, `i`. It also removes 
+  any attributes the HTML elements may have, to make sure that
+  when a user pastes content from something that gives along 
+  formatting instructions, we'd ignore that."
+  [html]
+  (sanitize-html
+   html
+   (clj->js
+    {:allowedTags ["b" "strong" "i" "em" "a" "u"]
+     :allowedAttributes {"a" ["href"]}})))
+
+(defn string->string
+  "Inserts the `inserted-string` into `string` at the given
+  index `index`."
+  [string inserted-string index]
+  (let [split-beginning (subs string 0 index)
+        split-end (subs string index)]
+    (str split-beginning inserted-string split-end)))
