@@ -35,13 +35,13 @@
     (r/create-class
      {:component-did-update
       (fn []
-        #_(let [selection (.getSelection js/window)
-                range (.createRange js/document)]
-            (.setStart range (first (.-childNodes @ref)) @caret-location-state)
-            (.collapse range true)
-            (.removeAllRanges selection)
-            (.addRange selection range)
-            (.focus @ref)))
+        (let [selection (.getSelection js/window)
+              range (.createRange js/document)]
+          (.setStart range (first (.-childNodes @ref)) @caret-location-state)
+          (.collapse range true)
+          (.removeAllRanges selection)
+          (.addRange selection range)
+          (.focus @ref)))
       :reagent-render
       (fn []
         [:div.paragraph-content

@@ -1,8 +1,5 @@
 (ns editor.utils
-  (:require [hickory.core :as h]
-            [hickory.render :as hr]
-            ["sanitize-html" :as sanitize-html]
-            [clojure.string :as str]))
+  (:require ["sanitize-html" :as sanitize-html]))
 
 (defn block->blocks
   "Takes an input of `blocks`, into which it adds `block`, 
