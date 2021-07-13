@@ -112,6 +112,6 @@
         caret-location-state (r/atom nil)]
     (r/create-class
      {:component-did-update
-      (place-caret! ref content-state caret-location-state)
+      #(place-caret! ref content-state caret-location-state)
       :reagent-render
-      (render ref content-state caret-location-state index)})))
+      #(render ref content-state caret-location-state index)})))
