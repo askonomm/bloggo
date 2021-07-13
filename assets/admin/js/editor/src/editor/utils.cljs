@@ -1,5 +1,6 @@
 (ns editor.utils
-  (:require ["sanitize-html" :as sanitize-html]))
+  (:require
+   ["sanitize-html" :as sanitize-html]))
 
 (defn block->blocks
   "Takes an input of `blocks`, into which it adds `block`, 

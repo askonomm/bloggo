@@ -1,11 +1,12 @@
 (ns editor.core
-  (:require [clojure.edn :as edn]
-            [reagent.dom :as rdom]
-            [re-frame.core :refer [dispatch dispatch-sync subscribe]]
-            [editor.events]
-            [editor.subs]
-            [editor.blocks :as blocks]
-            [editor.blocks.add :as blocks.add]))
+  (:require
+   [clojure.edn :as edn]
+   [reagent.dom :as rdom]
+   [re-frame.core :refer [dispatch dispatch-sync subscribe]]
+   [editor.events]
+   [editor.subs]
+   [editor.blocks :as blocks]
+   [editor.blocks.add :as blocks.add]))
 
 (defn editor [on-change-callback]
   (let [blocks @(subscribe [:blocks])]

@@ -160,7 +160,7 @@
     opacity: .5;
 }
 
-.block-editor .block.heading-big textarea {
+.block-editor .block.heading textarea {
     display: block;
     width: 100%;
     overflow: hidden;

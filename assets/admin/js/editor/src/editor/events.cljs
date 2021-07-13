@@ -1,7 +1,8 @@
 (ns editor.events
-  (:require [re-frame.core :refer [reg-event-fx reg-event-db]]
-            [editor.db :as db]
-            [editor.utils :as utils]))
+  (:require
+   [re-frame.core :refer [reg-event-fx reg-event-db]]
+   [editor.db :as db]
+   [editor.utils :as utils]))
 
 (reg-event-fx
  :initialise-db
@@ -22,7 +23,6 @@
 (reg-event-db
  :delete-block
  (fn [db [_ index]]
-   (prn "index: " index)
    (let [blocks (get db :blocks)]
      (assoc db :blocks (utils/block<-blocks blocks index)))))
 

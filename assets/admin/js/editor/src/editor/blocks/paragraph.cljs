@@ -1,7 +1,8 @@
 (ns editor.blocks.paragraph
-  (:require [reagent.core :as r]
-            [re-frame.core :refer [dispatch]]
-            [editor.utils :as utils]))
+  (:require
+   [reagent.core :as r]
+   [re-frame.core :refer [dispatch]]
+   [editor.utils :as utils]))
 
 (defn on-key-press!
   "Detect if the user pressed the `enter` key or not. If
