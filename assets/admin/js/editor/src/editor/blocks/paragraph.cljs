@@ -84,7 +84,8 @@
   "
   [ref content-state caret-location-state]
   (when (and (not (nil? @caret-location-state))
-             (>= (count @content-state) @caret-location-state))
+             (>= (count @content-state) @caret-location-state)
+             (first (.-childNodes @ref)))
     (let [selection (.getSelection js/window)
           range (.createRange js/document)]
       (.setStart range (first (.-childNodes @ref)) @caret-location-state)
