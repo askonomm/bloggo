@@ -33,6 +33,61 @@
     opacity: 1;
 }
 
+/**
+ * ----------------------------------------
+ * ADD BLOCK
+ * ----------------------------------------
+ */
+.block-editor .add-block {
+    width: 100%;
+    height: 4px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+}
+
+.block-editor .add-block:before {
+    display: none;
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: #272727;
+    position: relative;
+    top: 1px;
+}
+
+.block-editor .add-block:hover:before {
+    display: block;
+}
+
+.block-editor .add-block .add-btn {
+    display: none;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    font-weight: 800;
+    text-align: center;
+    color: #111;
+    text-shadow: 0 1px 0 #fff;
+    background: #fff;
+    background: linear-gradient(#fff, #eee);
+    border: 1px solid #fff;
+    border-radius: 100%;
+    cursor:  pointer;
+    z-index: 10;
+    position: absolute;
+    top: calc(50% - 14px);
+    left: calc(50% - 15px);
+}
+
+.block-editor .add-block:hover .add-btn {
+    display: block;
+}
+
+/**
+ * ----------------------------------------
+ * ADD BLOCK MENU
+ * ----------------------------------------
+ */
 .block-editor .menu {
     display: block;
     width: 400px;
@@ -91,53 +146,18 @@
     margin-top: 10px;
 }
 
-.block-editor .add-block {
-    width: 100%;
-    height: 4px;
-    padding-top: 14px;
-    padding-bottom: 14px;
-}
-
-.block-editor .add-block:before {
-    display: none;
-    content: '';
-    width: 100%;
-    height: 2px;
-    background: #272727;
-    position: relative;
-    top: 1px;
-}
-
-.block-editor .add-block:hover:before {
-    display: block;
-}
-
-.block-editor .add-block .add-btn {
-    display: none;
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
-    font-weight: 800;
-    text-align: center;
-    color: #111;
-    text-shadow: 0 1px 0 #fff;
-    background: #fff;
-    background: linear-gradient(#fff, #eee);
-    border: 1px solid #fff;
-    border-radius: 100%;
-    cursor:  pointer;
-    z-index: 10;
-    position: absolute;
-    top: calc(50% - 14px);
-    left: calc(50% - 15px);
-}
-
-.block-editor .add-block:hover .add-btn {
-    display: block;
-}
-
+/**
+ * ----------------------------------------
+ * PARAGRAPH BLOCK
+ * ----------------------------------------
+ */
 .block-editor .block.paragraph .paragraph-content {
     outline: none;
+}
+
+.block-editor .block.paragraph .paragraph-content:empty:before {
+    content: attr(data-placeholder);
+    opacity: .5;
 }
 
 .block-editor .block.heading-big textarea {
