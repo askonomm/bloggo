@@ -6,3 +6,8 @@
  :blocks
  (fn [db _]
    (get db :blocks)))
+
+(reg-sub
+ :block-focus
+ (fn [db _]
+   (get db :block-focus)))

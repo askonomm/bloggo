@@ -9,11 +9,21 @@
   the user did, we want to disable the default behaviour, which
   usually is creating a new line, and instead create a new 
   paragraph block below it."
-  [event]
-  (if (or (= "Enter" (.-key event))
-          (= 13 (.-keyCode event)))
+  [index event]
+  (when (or (= "Enter" (.-key event))
+            (= 13 (.-keyCode event)))
     (.preventDefault event)
-    (prn "enter was not pressed")))
+    (let [id (random-uuid)]
+      (dispatch
+       [:add-block
+        {:position (+ index 1)
+         :block {:id id
+                 :type :paragraph
+                 :content ""}}])
+      (dispatch
+       [:focus-block
+        {:id id
+         :where :beginning}]))))
 
 (defn on-input!
   "Whenever a key is pressed, we want to update the `content-state` atom 
@@ -103,7 +113,7 @@
    {:contentEditable true
     :data-placeholder "Start writing a paragraph ..."
     :ref (fn [el] (reset! ref el))
-    :on-key-press #(on-key-press! %)
+    :on-key-press #(on-key-press! index %)
     :on-input #(on-input! content-state caret-location-state index %)
     :on-paste #(on-paste! content-state caret-location-state %)
     :dangerouslySetInnerHTML {:__html @content-state}}])

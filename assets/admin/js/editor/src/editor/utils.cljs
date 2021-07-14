@@ -64,3 +64,6 @@
   (let [split-beginning (subs string 0 index)
         split-end (subs string index)]
     (str split-beginning inserted-string split-end)))
+
+(defn find-by-predicate [predicate collection]
+  (first (filter predicate collection)))

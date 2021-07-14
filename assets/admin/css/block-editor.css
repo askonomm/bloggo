@@ -158,6 +158,7 @@
 .block-editor .block.paragraph .paragraph-content:empty:before {
     content: attr(data-placeholder);
     opacity: .5;
+    cursor: text;
 }
 
 .block-editor .block.heading textarea {

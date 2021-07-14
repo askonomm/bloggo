@@ -5,7 +5,8 @@
    [re-frame.core :refer [dispatch]]
    [editor.events]
    [editor.blocks.paragraph :as blocks.paragraph]
-   [editor.blocks.heading :as blocks.heading]))
+   [editor.blocks.heading :as blocks.heading]
+   [editor.utils :as utils]))
 
 (defn content [index block]
   (cond
@@ -22,6 +23,15 @@
     [:> FontAwesomeIcon {:icon faTrash}]]])
 
 (defn block [index block]
-  [:div.block {:class (get block :type)}
+  [:div.block {:class (get block :type)
+               :data-id (get block :id)}
    [controls index]
    [content index block]])
+
+(defn focus! [{:keys [id where]} blocks]
+  (when-let [block-el (.querySelector js/document (str ".block[data-id='" id "']"))]
+    (let [block (utils/find-by-predicate #(= (:id %) id) blocks)]
+      (cond (= :paragraph (get block :type))
+            (.focus (.querySelector block-el ".paragraph-content"))
+            (= :heading (get block :type))
+            (.focus (.querySelector block-el "textarea"))))))

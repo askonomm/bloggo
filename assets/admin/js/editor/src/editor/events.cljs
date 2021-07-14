@@ -21,6 +21,11 @@
      (assoc db :blocks (utils/block->blocks blocks block position)))))
 
 (reg-event-db
+ :focus-block
+ (fn [db [_ v]]
+   (assoc db :block-focus v)))
+
+(reg-event-db
  :delete-block
  (fn [db [_ index]]
    (let [blocks (get db :blocks)]
